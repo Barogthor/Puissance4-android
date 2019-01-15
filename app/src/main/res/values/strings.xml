@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Puissance4</string>
     <string name="vs">VS</string>
+    <string name="profile">Profile</string>
+    <string name="solo">Solo</string>
+    <string name="multijoueur">Multijoueur</string>
 </resources>
