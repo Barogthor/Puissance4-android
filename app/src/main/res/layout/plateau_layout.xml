@@ -14,6 +14,9 @@
             app:layout_constraintTop_toBottomOf="@+id/NameJ2" app:layout_constraintEnd_toEndOf="@+id/NameJ2"
     />
     <GridLayout
+            android:background="@drawable/back_bord"
+            android:padding="16dp"
+
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:rowCount="6"
@@ -33,7 +36,8 @@
                 android:layout_rowWeight="0"
                 android:textSize="@dimen/heightCase"
                 android:id="@+id/case_1"
-                android:background="@drawable/back"
+                android:background="@drawable/pawn_yellow"
+
                 android:text=""/>
 
         <TextView
@@ -43,7 +47,7 @@
                 android:layout_rowWeight="0"
                 android:textSize="@dimen/heightCase"
                 android:id="@+id/case_2"
-                android:background="@drawable/back"
+                android:background="@drawable/pawn_red"
                 android:text=""/>
 
         <TextView
