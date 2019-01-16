@@ -42,3 +42,54 @@ class HorizontalWin : Winable {
         return Winable.Tokens.Horizontal
     }
 }
+
+class VerticalWin : Winable {
+    override fun win(board: Array<Board.Token>, x: Int, y: Int): Boolean {
+        repeat(y) j@{ j ->
+            var token_counter = 0
+            var previous_piece = Board.Token.Empty
+
+            repeat(x) i@{ i ->
+                val token = board[i * 7 + j]
+
+                if(token == Board.Token.Empty) {
+                    token_counter = 0
+                    previous_piece = token
+                    return@i
+                } else if(previous_piece == Board.Token.Empty || previous_piece != token) {
+                    token_counter = 0
+                    previous_piece = token
+                }
+
+                if(previous_piece == token) { token_counter += 1 }
+                if(token_counter == 4) { return true }
+            }
+        }
+
+        return false
+    }
+
+    override fun token(): Winable.Tokens {
+        return Winable.Tokens.Vertical
+    }
+}
+
+class LeftDiagonalWin : Winable {
+    override fun win(board: Array<Board.Token>, x: Int, y: Int): Boolean {
+        return false
+    }
+
+    override fun token(): Winable.Tokens {
+        return Winable.Tokens.Diagonal
+    }
+}
+
+class RightDiagonalWin : Winable {
+    override fun win(board: Array<Board.Token>, x: Int, y: Int): Boolean {
+        return false
+    }
+
+    override fun token(): Winable.Tokens {
+        return Winable.Tokens.Diagonal
+    }
+}

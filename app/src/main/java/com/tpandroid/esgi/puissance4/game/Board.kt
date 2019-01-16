@@ -1,20 +1,5 @@
 package com.tpandroid.esgi.puissance4.game
 
-fun main(args : Array<String>) {
-    val board = Board(NewtonGravity(), arrayOf(HorizontalWin()))
-
-    board.insert(3, Board.Token.Player1)
-    board.insert(1, Board.Token.Player1)
-    board.insert(2, Board.Token.Player1)
-    board.insert(3, Board.Token.Player1)
-
-    println(board)
-    println(board.victory())
-    board.insert(0, Board.Token.Player1)
-    println(board)
-    println(board.victory())
-}
-
 class Board(private val gravity : Gravitable, private val win_conditions : Array<Winable>) {
     enum class Token {
         Empty,
