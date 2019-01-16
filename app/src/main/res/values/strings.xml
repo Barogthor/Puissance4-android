@@ -4,4 +4,16 @@
     <string name="profile">Profile</string>
     <string name="solo">Solo</string>
     <string name="multijoueur">Multijoueur</string>
+    <string name="facile">Facile</string>
+    <string name="difficile">Difficile</string>
+    <string name="normal">Normal</string>
+    <string name="hors_ligne">Hors-ligne</string>
+    <string name="score">Score</string>
+    <string name="classement">Classement</string>
+    <string name="rang">Rang :</string>
+    <string name="victoire">Victoire</string>
+    <string name="defaite">Défaite</string>
+    <string name="victoire_lb">Victoire :</string>
+    <string name="defaite_lb">Défaite\ \ :</string>
+    <string name="difficulte">Difficulté</string>
 </resources>
