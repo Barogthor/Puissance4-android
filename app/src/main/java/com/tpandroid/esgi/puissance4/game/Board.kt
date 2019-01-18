@@ -40,7 +40,13 @@ class Board(private val gravity : Gravitable, private val win_conditions : Array
         builder.append("----------\n")
         repeat(6) { i ->
             repeat(7) { j ->
-                builder.append("| ${board[i * 7 + j]} ")
+                val piece = board[i * 7 + j]
+                var value = '.'
+
+                if(piece == Token.Player1) { value = '1' }
+                if(piece == Token.Player2) { value = '2' }
+
+                builder.append("| ${value} ")
             }
             builder.append("\n----------\n")
         }

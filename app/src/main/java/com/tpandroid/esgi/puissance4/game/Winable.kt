@@ -76,6 +76,17 @@ class VerticalWin : Winable {
 
 class LeftDiagonalWin : Winable {
     override fun win(board: Array<Board.Token>, x: Int, y: Int): Boolean {
+        repeat(x - 3) i@{ i ->
+            repeat(y - 3) j@{ j ->
+                val piece = board[i * 7 + j]
+                if(piece == Board.Token.Empty) { return@j }
+                if(board[(i + 1) * 7 + (j + 1)] == piece &&
+                    board[(i + 2) * 7 + (j + 2)] == piece &&
+                    board[(i + 3) * 7 + (j + 3)] == piece) {
+                    return true
+                }
+            }
+        }
         return false
     }
 
@@ -86,6 +97,17 @@ class LeftDiagonalWin : Winable {
 
 class RightDiagonalWin : Winable {
     override fun win(board: Array<Board.Token>, x: Int, y: Int): Boolean {
+        for(i in 0..(x - 3)) {
+            for(j in 3..y) {
+                val piece = board[i * 7 + j]
+                if(piece == Board.Token.Empty) { continue }
+                if(board[(i + 1) * 7 + (j - 1)] == piece &&
+                    board[(i + 2) * 7 + (j - 2)] == piece &&
+                    board[(i + 3) * 7 + (j - 3)] == piece) {
+                    return true
+                }
+            }
+        }
         return false
     }
 
