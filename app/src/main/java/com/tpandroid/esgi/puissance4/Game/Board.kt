@@ -1,4 +1,4 @@
-package com.tpandroid.esgi.puissance4.game
+package com.tpandroid.esgi.puissance4.Game
 
 class Board(private val gravity : Gravitable, private val win_conditions : Array<Winable>) {
     enum class Token {
@@ -12,7 +12,7 @@ class Board(private val gravity : Gravitable, private val win_conditions : Array
     fun insert(position : Int, piece : Token) : Boolean {
         assert(position in 0..6)
 
-        if(board[position] != Token.Empty) { return false; }
+        if(board[position] != Token.Empty) { return false }
 
         board[position] = piece
         gravity()

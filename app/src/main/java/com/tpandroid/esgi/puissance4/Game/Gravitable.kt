@@ -1,4 +1,4 @@
-package com.tpandroid.esgi.puissance4.game
+package com.tpandroid.esgi.puissance4.Game
 
 interface Gravitable {
     fun fall(board: Array<Board.Token>, x : Int, y : Int)

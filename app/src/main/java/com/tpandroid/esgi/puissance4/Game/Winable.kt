@@ -1,4 +1,4 @@
-package com.tpandroid.esgi.puissance4.game
+package com.tpandroid.esgi.puissance4.Game
 
 interface Winable {
     enum class Tokens {
