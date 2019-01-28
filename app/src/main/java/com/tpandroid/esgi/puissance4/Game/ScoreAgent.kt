@@ -1,25 +1,25 @@
 package com.tpandroid.esgi.puissance4.Game
 
-abstract class ScoreAgent(val board: Array<Board.Token>, val x: Int, val y: Int) {
-    abstract fun calculate(actual : Board.Token) : Int
+abstract class ScoreAgent {
+    abstract fun calculate(board: Array<Board.Token>, x: Int, y: Int, actual : Board.Token) : Int
 }
 
-class CenterAgent(board: Array<Board.Token>, x: Int, y: Int) : ScoreAgent(board, x, y) {
+class CenterAgent : ScoreAgent() {
     companion object {
         val INCREMENTER = 4
     }
 
-    override fun calculate(actual : Board.Token) : Int {
+    override fun calculate(board: Array<Board.Token>, x: Int, y: Int, actual : Board.Token) : Int {
         var counter = 0
         repeat(y) {
-            if(board[(x / 2 ) + 1 + it * x] == actual) { counter += INCREMENTER }
+            if(board[2 + it * x] == actual) { counter += INCREMENTER }
         }
 
         return counter
     }
 }
 
-class CountAgent(board: Array<Board.Token>, x: Int, y: Int) : ScoreAgent(board, x, y) {
+class CountAgent : ScoreAgent() {
     companion object {
         val INCREMENT_COUNTER = mapOf(
             Pair(0, 0),
@@ -30,24 +30,24 @@ class CountAgent(board: Array<Board.Token>, x: Int, y: Int) : ScoreAgent(board, 
         )
     }
 
-    override fun calculate(actual: Board.Token): Int {
+    override fun calculate(board: Array<Board.Token>, x: Int, y: Int, actual: Board.Token): Int {
         var counter = 0
         for(i in 0..(x - 1)) {
             for(j in 0..(y - 1)) {
                 val piece = board[i * 7 + j]
                 if(piece != actual) { continue }
 
-                counter += horizontal(i, j, 1, actual)
-                counter += vertical(i, j, 1, actual)
-                counter += diagonal(i, j, 1, actual)
-                counter += diagonal(i, j, -1, actual)
+                counter += horizontal(board, x, y, i, j, 1, actual)
+                counter += vertical(board, x, y, i, j, 1, actual)
+                counter += diagonal(board, x, y, i, j, 1, actual)
+                counter += diagonal(board, x, y, i, j, -1, actual)
             }
         }
 
         return counter
     }
 
-    private fun horizontal(i : Int, j : Int, direction: Int, actual: Board.Token) : Int {
+    private fun horizontal(board: Array<Board.Token>, x: Int, y: Int, i : Int, j : Int, direction: Int, actual: Board.Token) : Int {
         var counter = 0
 
         var threshold = 0
@@ -70,7 +70,7 @@ class CountAgent(board: Array<Board.Token>, x: Int, y: Int) : ScoreAgent(board, 
         return counter
     }
 
-    private fun vertical(i : Int, j : Int, direction: Int, actual: Board.Token) : Int {
+    private fun vertical(board: Array<Board.Token>, x: Int, y: Int, i : Int, j : Int, direction: Int, actual: Board.Token) : Int {
         var counter = 0
 
         var threshold = 0
@@ -93,7 +93,7 @@ class CountAgent(board: Array<Board.Token>, x: Int, y: Int) : ScoreAgent(board, 
         return counter
     }
 
-    private fun diagonal(i : Int, j : Int, direction: Int, actual: Board.Token) : Int {
+    private fun diagonal(board: Array<Board.Token>, x: Int, y: Int, i : Int, j : Int, direction: Int, actual: Board.Token) : Int {
         var threshold = 0
         for(k in 0..3) {
             if(i + k >= 6 || i + k * direction < 0) { break }

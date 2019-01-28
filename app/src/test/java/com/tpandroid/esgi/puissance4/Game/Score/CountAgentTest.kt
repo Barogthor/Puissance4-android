@@ -9,18 +9,18 @@ class CountAgentTest {
     @Test
     fun withNoToken() {
         val board = Array(6 * 7) { Board.Token.Empty }
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(0, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(0, subject.calculate(board, 6, 7, Board.Token.Player1))
     }
 
     @Test
     fun withOneToken() {
         val board = Array(6 * 7) { Board.Token.Empty }
         board[4 + 5 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(0, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(0, subject.calculate(board, 6, 7, Board.Token.Player1))
     }
 
     @Test
@@ -28,9 +28,9 @@ class CountAgentTest {
         val board = Array(6 * 7) { Board.Token.Empty }
         board[0 + 5 * 7] = Board.Token.Player1
         board[5 + 5 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(0, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(0, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -38,9 +38,9 @@ class CountAgentTest {
         val board = Array(6 * 7) { Board.Token.Empty }
         board[0 + 5 * 7] = Board.Token.Player1
         board[1 + 5 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(2, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(2, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -48,9 +48,9 @@ class CountAgentTest {
         val board = Array(6 * 7) { Board.Token.Empty }
         board[0 + 5 * 7] = Board.Token.Player1
         board[2 + 5 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(2, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(2, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -59,9 +59,9 @@ class CountAgentTest {
         board[0 + 5 * 7] = Board.Token.Player1
         board[1 + 5 * 7] = Board.Token.Player2
         board[2 + 5 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(0, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(0, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -69,9 +69,9 @@ class CountAgentTest {
         val board = Array(6 * 7) { Board.Token.Empty }
         board[0 + 5 * 7] = Board.Token.Player1
         board[0 + 4 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(2, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(2, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -80,9 +80,9 @@ class CountAgentTest {
         board[0 + 5 * 7] = Board.Token.Player1
         board[0 + 4 * 7] = Board.Token.Player2
         board[0 + 3 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(0, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(0, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -91,9 +91,9 @@ class CountAgentTest {
         board[0 + 5 * 7] = Board.Token.Player1
         board[0 + 4 * 7] = Board.Token.Player1
         board[1 + 5 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(6, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(6, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -101,9 +101,9 @@ class CountAgentTest {
         val board = Array(6 * 7) { Board.Token.Empty }
         board[0 + 5 * 7] = Board.Token.Player1
         board[1 + 4 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(2, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(2, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     @Test
@@ -112,9 +112,9 @@ class CountAgentTest {
         board[0 + 5 * 7] = Board.Token.Player1
         board[1 + 4 * 7] = Board.Token.Player1
         board[2 + 3 * 7] = Board.Token.Player1
-        val subject = CountAgent(board, 6, 7)
+        val subject = CountAgent()
 
-        Assert.assertEquals(5 + 2, subject.calculate(Board.Token.Player1))
+        Assert.assertEquals(5 + 2, subject.calculate(board, 6, 7,Board.Token.Player1))
     }
 
     fun toString(board : Array<Board.Token>) : String {
