@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".LeaderboardActivity">
+        </activity>
+        <activity android:name=".ProfilActivity">
+        </activity>
+        <activity android:name=".ScoreActivity">
+        </activity>
+        <activity android:name=".SoloActivity">
+        </activity>
+        <activity android:name=".MultiActivity">
+        </activity>
+        <activity android:name=".PlayBoardActivity">
+        </activity>
     </application>
 
 </manifest>

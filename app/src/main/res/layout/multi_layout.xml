@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
-            android:text="@string/solo"
+            android:text="@string/multijoueur"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:layout_marginTop="8dp"
@@ -30,7 +30,7 @@
             app:layout_constraintVertical_bias="0.275">
 
         <Button
-                android:text="@string/multijoueur"
+                android:text="@string/en_ligne"
                 android:layout_width="match_parent"
                 android:layout_height="50dp" android:id="@+id/bt_toProfil"
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
