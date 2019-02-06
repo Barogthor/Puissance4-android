@@ -1,13 +1,17 @@
 package com.tpandroid.esgi.puissance4.Game
 
-class Board(private val gravity : Gravitable, private val win_conditions : Array<Winable>) {
+import java.util.*
+
+class Board(
+    private val gravity : Gravitable,
+    private val win_conditions : Array<Winable>,
+    val board : Array<Token> = Array(6 * 7) { Token.Empty }
+) : Cloneable {
     enum class Token {
         Empty,
         Player1,
         Player2
     }
-
-    private val board = Array(6 * 7) { Token.Empty }
 
     fun insert(position : Int, piece : Token) : Boolean {
         assert(position in 0..6)
@@ -34,6 +38,18 @@ class Board(private val gravity : Gravitable, private val win_conditions : Array
         return null
     }
 
+    public override fun clone(): Any {
+        return Board(gravity, win_conditions, board.clone())
+    }
+
+    fun scoring(agents : Array<ScoreAgent>, current : Board.Token, enemy: Board.Token) : Int {
+        return agents.fold(0) { acc, scoreAgent ->
+            acc + scoreAgent.calculate(board, 6, 7, current)
+        } - agents.fold(0) { acc, scoreAgent ->
+            acc + scoreAgent.calculate(board, 6, 7, enemy)
+        }
+    }
+
     override fun toString() : String {
         val builder = StringBuilder();
 
@@ -41,15 +57,17 @@ class Board(private val gravity : Gravitable, private val win_conditions : Array
         repeat(6) { i ->
             repeat(7) { j ->
                 val piece = board[i * 7 + j]
-                var value = '.'
+                var value = "."
 
-                if(piece == Token.Player1) { value = '1' }
-                if(piece == Token.Player2) { value = '2' }
+                if(piece == Token.Player1) { value = "${"\u001B[32m"}X${"\u001B[0m"}" }
+                if(piece == Token.Player2) { value = "${"\u001B[36m"}O${"\u001B[0m"}" }
 
                 builder.append("| ${value} ")
             }
             builder.append("\n----------\n")
         }
+
+        builder.append("\n\n= 0 | 1 | 2 | 3 | 4 | 5 | 6 |")
 
         return builder.toString()
     }

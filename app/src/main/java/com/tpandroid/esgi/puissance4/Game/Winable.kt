@@ -97,7 +97,7 @@ class LeftDiagonalWin : Winable {
 
 class RightDiagonalWin : Winable {
     override fun win(board: Array<Board.Token>, x: Int, y: Int): Boolean {
-        for(i in 0..(x - 3)) {
+        for(i in 0..(x - 4)) {
             for(j in 3..y) {
                 val piece = board[i * 7 + j]
                 if(piece == Board.Token.Empty) { continue }
