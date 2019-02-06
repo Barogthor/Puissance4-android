@@ -50,7 +50,8 @@
                 android:layout_marginRight="8dp"
                 app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/bt_toProfil" app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintBottom_toTopOf="@+id/bt_toProfil" app:layout_constraintTop_toTopOf="parent"
+                android:onClick="goToGameBoardOffline"/>
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
