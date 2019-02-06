@@ -10,7 +10,7 @@
             android:text="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/streakJ" android:layout_marginTop="8dp"
+            android:id="@+id/streakJ2" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/NameJ2" app:layout_constraintEnd_toEndOf="@+id/NameJ2"
     />
     <GridLayout
@@ -470,7 +470,7 @@
             android:text="0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/StreakJ1" android:layout_marginTop="8dp"
+            android:id="@+id/streakJ1" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/NameJ1" app:layout_constraintStart_toStartOf="@+id/NameJ1"/>
     <TextView
             android:text="@string/vs"
