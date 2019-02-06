@@ -14,6 +14,8 @@ class MultiActivity : AppCompatActivity() {
 
     fun goToGameBoardOffline(view: View?){
         var intent = Intent(this,PlayBoardActivity::class.java).apply {  }
+        intent.putExtra("player1","Florian")
+        intent.putExtra("player2","Invité")
         startActivity(intent)
     }
 
