@@ -19,6 +19,12 @@ class CenterAgent : ScoreAgent() {
     }
 }
 
+class RandomAgent : ScoreAgent() {
+    override fun calculate(board: Array<Board.Token>, x: Int, y: Int, actual: Board.Token): Int {
+        return (0..50).random()
+    }
+}
+
 class CountAgent : ScoreAgent() {
     companion object {
         val INCREMENT_COUNTER = mapOf(

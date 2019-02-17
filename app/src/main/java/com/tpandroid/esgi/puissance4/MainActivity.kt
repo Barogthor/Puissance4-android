@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     fun goToSolo(view: View?){
         var intent = Intent(this,SoloActivity::class.java).apply {  }
         startActivity(intent)
