@@ -5,6 +5,7 @@ import java.util.*
 class Board(
     private val gravity : Gravitable,
     private val win_conditions : Array<Winable>,
+    private val displayer : Displayable,
     val board : Array<Token> = Array(6 * 7) { Token.Empty }
 ) : Cloneable {
     enum class Token {
@@ -39,7 +40,7 @@ class Board(
     }
 
     public override fun clone(): Any {
-        return Board(gravity, win_conditions, board.clone())
+        return Board(gravity, win_conditions, displayer, board.clone())
     }
 
     fun scoring(agents : Array<ScoreAgent>, current : Board.Token, enemy: Board.Token) : Int {
@@ -48,6 +49,10 @@ class Board(
         } - agents.fold(0) { acc, scoreAgent ->
             acc + scoreAgent.calculate(board, 6, 7, enemy)
         }
+    }
+
+    fun draw() {
+        displayer.draw(board, 6, 7)
     }
 
     override fun toString() : String {
