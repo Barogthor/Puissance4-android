@@ -31,7 +31,7 @@ class Multi(override val board : Board) : Game(board) {
     }
 }
 
-class SoloAi(override val board : Board, val complexity : Int, val algo : Minimax) : Game(board) {
+class SoloAi(override val board : Board, private val complexity : Int, private val algo : Minimax) : Game(board) {
     val player = Board.Token.Player1
     val ai = Board.Token.Player2
 
