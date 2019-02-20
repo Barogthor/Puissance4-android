@@ -12,28 +12,36 @@ class SoloActivity : AppCompatActivity() {
         setContentView(R.layout.solo_layout)
     }
 
-
     fun playEasy(view: View?){
-        var intent = Intent(this,PlayBoardActivity::class.java).apply {  }
-        intent.putExtra("difficulte",Difficulte.EASY)
+        val intent = Intent(this,PlayBoardActivity::class.java).apply {  }
         intent.putExtra("player1","Florian")
         intent.putExtra("player2","IA Facile")
+
+        intent.putExtra("type", "ai")
+        intent.putExtra("complexity", 2)
+
         startActivity(intent)
     }
 
     fun playNormal(view: View?){
-        var intent = Intent(this,PlayBoardActivity::class.java).apply {  }
-        intent.putExtra("difficulte",Difficulte.NORMAL)
+        val intent = Intent(this,PlayBoardActivity::class.java).apply {  }
         intent.putExtra("player1","Florian")
         intent.putExtra("player2","IA Normal")
+
+        intent.putExtra("type", "ai")
+        intent.putExtra("complexity", 5)
+
         startActivity(intent)
     }
 
     fun playHard(view: View?){
-        var intent = Intent(this,PlayBoardActivity::class.java).apply {  }
-        intent.putExtra("difficulte",Difficulte.HARD)
+        val intent = Intent(this,PlayBoardActivity::class.java).apply {  }
         intent.putExtra("player1","Florian")
         intent.putExtra("player2","IA Difficile")
+
+        intent.putExtra("type", "ai")
+        intent.putExtra("complexity", 8)
+
         startActivity(intent)
     }
 

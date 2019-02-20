@@ -36,7 +36,7 @@
                 android:layout_rowWeight="0"
                 android:textSize="@dimen/heightCase"
                 android:id="@+id/case_1"
-                android:background="@drawable/pawn_yellow"
+                android:background="@drawable/back"
 
                 android:text=""/>
 
@@ -47,7 +47,7 @@
                 android:layout_rowWeight="0"
                 android:textSize="@dimen/heightCase"
                 android:id="@+id/case_2"
-                android:background="@drawable/pawn_red"
+                android:background="@drawable/back"
                 android:text=""/>
 
         <TextView
