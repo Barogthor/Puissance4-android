@@ -1,6 +1,5 @@
 package com.tpandroid.esgi.puissance4
 
-//import android.content.Intent
 import android.app.Activity
 import android.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -31,9 +30,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.Games
 
-
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var googleAuthentification: GoogleAuthentification
     /* Request code used to invoke sign in user interactions. */
     private val RC_SIGN_IN = 9001
 
@@ -52,8 +51,6 @@ class MainActivity : AppCompatActivity() {
     val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
     var signInOpt = signInOptions.build()
 
-    /*var gso = signInOptions.requestServerAuthCode("839161475425-40m7ffku0dsd3723dv3ph13njuuplosq.apps.googleusercontent.com")
-        .build()*/
 
     var account = GoogleSignInAccount.createDefault()
 
@@ -63,7 +60,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_layout)
 
-        startSignInIntent()
+        googleAuthentification = GoogleAuthentification(this)
+        googleAuthentification.startSignInIntent()
+        Log.i(TEST_RESULT,"Connection: ${googleAuthentification.isSignedIn()}")
 
         // Create the client used to sign in to Google services.
         /*mGoogleSignInClient = GoogleSignIn.getClient(
@@ -164,13 +163,11 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(mGoogleSignInClient!!.getSignInIntent(), RC_SIGN_IN)
     }*/
 
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             var task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
+            googleAuthentification.handleSignInResult(task)
 
             /*val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
             if (result.isSuccess) {
@@ -191,6 +188,7 @@ class MainActivity : AppCompatActivity() {
         try
         {
             val account = completedTask.getResult(ApiException::class.java)
+            Log.i(TEST_RESULT,"YOU ARE CONNECTED")
             // Signed in successfully, show authenticated UI.
             //updateUI(account)
         }
