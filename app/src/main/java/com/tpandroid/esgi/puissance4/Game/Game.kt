@@ -1,5 +1,10 @@
 package com.tpandroid.esgi.puissance4.Game
 
+import android.util.Log
+import java.lang.Math.ceil
+import kotlin.math.log
+import kotlin.math.roundToInt
+
 abstract class Game(open val board : Board) {
     abstract fun play(index : Int) : Board.Token?
 }
@@ -34,11 +39,13 @@ class Multi(override val board : Board) : Game(board) {
 class SoloAi(override val board : Board, private val complexity : Int, private val algo : Minimax) : Game(board) {
     val player = Board.Token.Player1
     val ai = Board.Token.Player2
+    var turn = 0
 
     override fun play(index : Int) : Board.Token? {
         return if(board.insert(index, player)) {
+            turn += 1
             if(board.victory() == null) {
-                val intention = algo.minimax(complexity, board)
+                val intention = algo.minimax(complexity + log4(turn), board)
                 board.insert(intention, ai)
 
                 if(board.victory() == null) { null } else { ai }
@@ -48,5 +55,9 @@ class SoloAi(override val board : Board, private val complexity : Int, private v
         } else {
             null
         }
+    }
+
+    private fun log4(x : Int) : Int {
+        return ceil(log(x.toDouble(), 4.0)).roundToInt()
     }
 }
