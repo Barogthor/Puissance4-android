@@ -21,7 +21,7 @@ class CenterAgent : ScoreAgent() {
 
 class RandomAgent : ScoreAgent() {
     override fun calculate(board: Array<Board.Token>, x: Int, y: Int, actual: Board.Token): Int {
-        return (0..50).random()
+        return (0..10).random()
     }
 }
 
