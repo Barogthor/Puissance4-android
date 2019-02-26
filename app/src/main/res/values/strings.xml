@@ -17,4 +17,6 @@
     <string name="difficulte">Difficulté</string>
     <string name="multijoueur">Multijoueur</string>
     <string name="en_ligne">En-ligne</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
