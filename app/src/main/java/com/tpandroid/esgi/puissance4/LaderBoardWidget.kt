@@ -4,6 +4,8 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.widget.RemoteViews
+import com.tpandroid.esgi.puissance4.Game.Cache
+import java.io.File
 
 /**
  * Implementation of App Widget functionality.
@@ -35,7 +37,23 @@ class LaderBoardWidget : AppWidgetProvider() {
             val widgetText = context.getString(R.string.appwidget_text)
             // Construct the RemoteViews object
             val views = RemoteViews(context.packageName, R.layout.lader_board_widget)
-            views.setTextViewText(R.id.appwidget_text, widgetText)
+//            views.setTextViewText(R.id.appwidget_text, widgetText)
+
+            val cache = Cache(context.filesDir)
+            val easy = cache.getScore(1)
+            val medium = cache.getScore(2)
+            val hard = cache.getScore(3)
+
+
+            views.setTextViewText(R.id.easy_v, easy.first.toString())
+            views.setTextViewText(R.id.easy_d, easy.second.toString())
+
+            views.setTextViewText(R.id.medium_v, medium.first.toString())
+            views.setTextViewText(R.id.medium_d, medium.second.toString())
+
+            views.setTextViewText(R.id.hard_v, hard.first.toString())
+            views.setTextViewText(R.id.hard_d, hard.second.toString())
+
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(appWidgetId, views)
