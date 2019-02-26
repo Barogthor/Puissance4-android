@@ -35,17 +35,13 @@ class Cache(val directory: File) {
     private fun loadScoreFromFile(file: File): Pair<Int, Int> {
         val scanner = Scanner(file)
 
-        val victories = try {
-            scanner.nextInt()
-        } catch (e : InputMismatchException) {
-            0
-        }
+        val line = scanner.nextLine()
 
-        val defeat = try {
-            scanner.nextInt()
-        } catch (e : InputMismatchException) {
-            0
-        }
+        val values = line.split(" ")
+
+        val results = values.map { it.toInt() }
+        val victories = results[0]
+        val defeat = results[1]
 
         scanner.close()
 
@@ -55,9 +51,10 @@ class Cache(val directory: File) {
     private fun writeScoreToFile(file : File, score : Pair<Int, Int>) : Boolean {
         val writer = FileWriter(file)
 
-        writer.write("\n")
-        writer.write(score.first)
-        writer.write(score.second + 1)
+//        writer.write("\n")
+        writer.write(score.first.toString())
+        writer.write(" ")
+        writer.write(score.second.toString())
 
         writer.close()
 

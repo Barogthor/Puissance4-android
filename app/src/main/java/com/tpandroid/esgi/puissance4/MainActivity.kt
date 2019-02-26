@@ -32,6 +32,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.Games
 
 import com.tpandroid.esgi.puissance4.Game.Cache
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,10 +58,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_layout)
 
-        val cache = Cache(cacheDir)
+        val cache = Cache(filesDir)
 
         cache.setScore(1, Pair(5, 5))
 
+        Log.i("cacheuu", cache.getScore(1).toString())
+        cache.incrDefeat(1)
         Log.i("cacheuu", cache.getScore(1).toString())
 
 
