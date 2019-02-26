@@ -39,7 +39,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/bt_toMulti"
                 app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
-        />
+                android:onClick="goToGameboardOnline"/>
         <Button
                 android:text="@string/hors_ligne"
                 android:layout_width="match_parent"

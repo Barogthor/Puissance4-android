@@ -48,13 +48,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 
-    // Configure Google Sign In
-    val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
-    var signInOpt = signInOptions.build()
-
-    /*var gso = signInOptions.requestServerAuthCode("839161475425-40m7ffku0dsd3723dv3ph13njuuplosq.apps.googleusercontent.com")
-        .build()*/
-
     var account = GoogleSignInAccount.createDefault()
 
     private lateinit var auth: FirebaseAuth
@@ -64,37 +57,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.home_layout)
 
         startSignInIntent()
-
-        // Create the client used to sign in to Google services.
-        /*mGoogleSignInClient = GoogleSignIn.getClient(
-            this,
-            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN).build()
-        )*/
-
-        /*// Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
-
-        // Obtain the FirebaseAnalytics instance.
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
-
-        //Login Events
-        val bundle = Bundle()
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle)
-
-        val ctl = GoogleSignIn.getClient(this, gso)
-        Log.i("TEST_RESULT_CLIENT :", ctl.toString())
-
-        Log.i("TEST_RESULT :", "Blablabla")
-        if(isSignedIn()) {
-            signInSilently()
-        } else {
-            Log.i("TEST_RESULT_ISSIGNIN :", "Is Not Sign In")
-            startSignInIntent()
-        }*/
-
-        //Unlock Achievements
-        //bundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, achievementId);
-        //firebaseAnalytics.logEvent(FirebaseAnalytics.Event.UNLOCK_ACHIEVEMENT, bundle);
 
     }
 
@@ -110,6 +72,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToSolo(view: View?){
+        Log.i(TEST_RESULT, "Is Signed In" + isSignedIn())
         var intent = Intent(this,SoloActivity::class.java).apply {  }
         startActivity(intent)
     }
@@ -126,43 +89,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.i(TEST_RESULT, "Blablabla22222")
-        /*var signInClient = GoogleSignIn.getClient(this,
-            gso)
-        signInClient.silentSignIn()*/
 
-        //signInSilently();
-
-        /*if(isSignedIn())
-            signInSilently()
-        else {
-            Log.i("TEST_RESULT_ISSIGNIN :", "Is Not Sign In")
-            startSignInIntent()
-        }*/
+        if(isSignedIn())
+        {
+            var player = GoogleSignIn.getLastSignedInAccount(this)!!
+            Games.getAchievementsClient(this, player).unlock(getString(R.string.achievement_test_achievement))
+            Log.i(TEST_RESULT, "Achievement Unlock")
+        }
     }
 
-    /*private fun isSignedIn(): Boolean {
+    private fun isSignedIn(): Boolean {
         return GoogleSignIn.getLastSignedInAccount(this) != null
     }
-
-    private fun signInSilently() {
-        Log.d(TEST_RESULT, "signInSilently()")
-
-        mGoogleSignInClient!!.silentSignIn().addOnCompleteListener(this
-        ) { task ->
-            if (task.isSuccessful) {
-                Log.d(TEST_RESULT, "signInSilently(): success")
-                //onConnected(task.result)
-            } else {
-                Log.d(TEST_RESULT, "signInSilently(): failure", task.exception)
-                //onDisconnected()
-            }
-        }
-    }*/
-
-    /*private fun startSignInIntent() {
-        startActivityForResult(mGoogleSignInClient!!.getSignInIntent(), RC_SIGN_IN)
-    }*/
 
 
 
@@ -172,18 +110,6 @@ class MainActivity : AppCompatActivity() {
             var task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
 
-            /*val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
-            if (result.isSuccess) {
-                // The signed in account is stored in the result.
-                val signedInAccount = result.signInAccount
-            } else {
-                var message = result.status.statusMessage
-                if (message == null || message.isEmpty()) {
-                    message = getString(R.string.project_id)
-                }
-                AlertDialog.Builder(this).setMessage(message)
-                    .setNeutralButton(android.R.string.ok, null).show()
-            }*/
         }
     }
 
@@ -191,14 +117,11 @@ class MainActivity : AppCompatActivity() {
         try
         {
             val account = completedTask.getResult(ApiException::class.java)
-            // Signed in successfully, show authenticated UI.
-            //updateUI(account)
         }
         catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
             Log.w(TEST_RESULT, "signInResult:failed code=" + e.getStatusCode())
-            //updateUI(null)
         }
     }
 }
