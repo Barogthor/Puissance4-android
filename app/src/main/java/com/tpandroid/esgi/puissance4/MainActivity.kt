@@ -5,8 +5,8 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.util.Log
+import android.view.View
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -31,6 +31,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.Games
 
+import com.tpandroid.esgi.puissance4.Game.Cache
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,6 +56,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_layout)
+
+        val cache = Cache(cacheDir)
+
+        cache.setScore(1, Pair(5, 5))
+
+        Log.i("cacheuu", cache.getScore(1).toString())
+
 
         startSignInIntent()
 
