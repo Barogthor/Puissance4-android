@@ -30,9 +30,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.Games
+import com.tpandroid.esgi.puissance4.Game.AchievementsUnlocker
 
 import com.tpandroid.esgi.puissance4.Game.Cache
 import com.tpandroid.esgi.puissance4.firebase.Score
+import java.io.File
 import com.tpandroid.esgi.puissance4.firebase.ScoreFirebase
 import com.tpandroid.esgi.puissance4.observer.ScoreObservable
 import com.tpandroid.esgi.puissance4.observer.ScoreObserver
@@ -64,13 +66,18 @@ class MainActivity : AppCompatActivity(), ScoreObserver {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_layout)
 
-//        val cache = Cache(cacheDir)
+        val cache = Cache(filesDir)
 
-//        cache.setScore(1, Pair(5, 5))
+        Log.i("cacheuu", cache.getScore(2).toString())
 
-//        Log.i("cacheuu", cache.getScore(1).toString())
+        cache.setScore(1, Pair(5, 5))
+        cache.setScore(1, Pair(12, 5))
 
-//        startSignInIntent()
+        Log.i("cacheuu", cache.getScore(1).toString())
+        cache.incrDefeat(1)
+        Log.i("cacheuu", cache.getScore(1).toString())
+
+        startSignInIntent()
 
         println("=======================================================")
         var scoreFirebase = ScoreFirebase("florian")
@@ -110,9 +117,10 @@ class MainActivity : AppCompatActivity(), ScoreObserver {
 
         if(isSignedIn())
         {
-            var player = GoogleSignIn.getLastSignedInAccount(this)!!
-            Games.getAchievementsClient(this, player).unlock(getString(R.string.achievement_test_achievement))
-            Log.i(TEST_RESULT, "Achievement Unlock")
+            val cache = Cache(filesDir)
+            //cache.setScore(1, Pair(5, 5))
+            val achievementsUnlocker = AchievementsUnlocker()
+            achievementsUnlocker.unlock(cache, this, GoogleSignIn.getLastSignedInAccount(this))
         }
     }
 
