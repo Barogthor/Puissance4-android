@@ -7,10 +7,12 @@ import java.util.List;
 
 public class AchievementsUnlocker {
 
+
     private List<Integer> achievements;
 
     public AchievementsUnlocker()
     {
+
         achievements.add(R.string.achievement_test_achievement);
 
         achievements.add(R.string.achievement_first_blood_facile);
@@ -34,6 +36,6 @@ public class AchievementsUnlocker {
 
     private void unlock(Cache cachedir){
         //TODO Unlocker
-        
+
     }
 }

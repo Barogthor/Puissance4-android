@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.GridLayout
 import android.widget.TextView
 import com.tpandroid.esgi.puissance4.Game.*
+import com.tpandroid.esgi.puissance4.firebase.Score
 import java.util.*
 
 class PlayBoardActivity : AppCompatActivity() {
@@ -71,7 +72,10 @@ class PlayBoardActivity : AppCompatActivity() {
                     val winner = game.play(j)
                     board.draw()
                     if(winner != null) {
-                        val intent = Intent(this,ProfilActivity::class.java).apply {  }
+                        val intent = Intent(this,ScoreActivity::class.java).apply {  }
+                        intent.putExtra("victory",winner==Board.Token.Player1)
+                        if(this.intent.hasExtra("complexity"))
+                            intent.putExtra("complexity",this.intent.getIntExtra("complexity",5))
                         startActivity(intent)
                     }
                 }
