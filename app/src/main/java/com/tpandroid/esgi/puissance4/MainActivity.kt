@@ -33,10 +33,16 @@ import com.google.android.gms.games.Games
 import com.tpandroid.esgi.puissance4.Game.AchievementsUnlocker
 
 import com.tpandroid.esgi.puissance4.Game.Cache
+import com.tpandroid.esgi.puissance4.firebase.Score
 import java.io.File
 import com.tpandroid.esgi.puissance4.firebase.ScoreFirebase
+import com.tpandroid.esgi.puissance4.observer.ScoreObservable
+import com.tpandroid.esgi.puissance4.observer.ScoreObserver
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ScoreObserver {
+    override fun update(score: Score) {
+        Log.i("SCORE",score.toString())
+    }
 
     /* Request code used to invoke sign in user interactions. */
     private val RC_SIGN_IN = 9001
@@ -75,9 +81,8 @@ class MainActivity : AppCompatActivity() {
 
         println("=======================================================")
         var scoreFirebase = ScoreFirebase("florian")
-        var score = scoreFirebase.getUserScore()
-        println(score)
-        println("=======================================================")
+        var score = Score(1,1,3,2,0,4)
+        scoreFirebase.updateScore(score)
     }
 
     private fun startSignInIntent() {

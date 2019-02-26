@@ -2,45 +2,41 @@ package com.tpandroid.esgi.puissance4.firebase
 
 import android.util.Log
 import com.google.firebase.database.*
+import com.tpandroid.esgi.puissance4.observer.ScoreObservable
+import com.tpandroid.esgi.puissance4.observer.ScoreObserver
+import java.sql.Timestamp
 
 class ScoreFirebase {
-
-
     companion object {
         private var database = FirebaseDatabase.getInstance()
     }
 
-
+    private val scoreListener = ScoreEventListener()
     private lateinit var scoreRef: DatabaseReference
 
     constructor(user: String){
-        scoreRef = database.reference.child(user)
+        scoreRef = database.reference.child("users").child(user)
     }
 
     fun updateScore(score: Score?){
-        if(score!=null)
-            scoreRef.setValue(score)
+        if(score!=null) {
+            println("[DEBUG] UPDATE")
+            scoreRef.setValue(score).addOnFailureListener(FirebaseFailureListener())
+                .addOnSuccessListener(FirebaseSucessListener())
+        }
     }
 
-    fun getUserScore(): Score?{
+    fun getUserScore(scoreObserver: ScoreObserver){
         var score: Score? = null
-        val scoreListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                score = dataSnapshot.getValue(Score::class.java)
-                print("========================fuck=======================")
-                println(score)
-                // ...
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("ScoreListener", "loadPost:onCancelled", databaseError.toException())
-                // ...
-            }
-        }
+        scoreListener.addObserver(scoreObserver)
         scoreRef.addListenerForSingleValueEvent(scoreListener)
-        return score
+        updateTimestamp()
+    }
+
+    fun updateTimestamp(){
+        scoreRef.child("timestamp_read").setValue(System.currentTimeMillis()/1000)
+            .addOnFailureListener(FirebaseFailureListener())
+            .addOnSuccessListener(FirebaseSucessListener())
     }
 
 }
