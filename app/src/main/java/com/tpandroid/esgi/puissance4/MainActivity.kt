@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
         if(isSignedIn())
         {
             val cache = Cache(filesDir)
-            cache.setScore(1, Pair(5, 5))
+            //cache.setScore(1, Pair(5, 5))
             val achievementsUnlocker = AchievementsUnlocker()
             achievementsUnlocker.unlock(cache, this, GoogleSignIn.getLastSignedInAccount(this))
         }
