@@ -29,7 +29,7 @@ class SoloActivity : AppCompatActivity() {
         intent.putExtra("player2","IA Normal")
 
         intent.putExtra("type", "ai")
-        intent.putExtra("complexity", 5)
+        intent.putExtra("complexity", 4)
 
         startActivity(intent)
     }
@@ -40,7 +40,7 @@ class SoloActivity : AppCompatActivity() {
         intent.putExtra("player2","IA Difficile")
 
         intent.putExtra("type", "ai")
-        intent.putExtra("complexity", 8)
+        intent.putExtra("complexity", 5)
 
         startActivity(intent)
     }
