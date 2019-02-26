@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Google Play game services IDs.
+Save this file as res/values/games-ids.xml in your project.
+-->
+<resources>
+    <!-- app_id -->
+    <string name="app_id" translatable="false">839161475425</string>
+    <!-- package_name -->
+    <string name="package_name" translatable="false">com.tpandroid.esgi.puissance4</string>
+    <!-- achievement First Blood (Facile) -->
+    <string name="achievement_first_blood_facile" translatable="false">CgkI4eKvj7YYEAIQAg</string>
+    <!-- achievement Hat Trick (Facile) -->
+    <string name="achievement_hat_trick_facile" translatable="false">CgkI4eKvj7YYEAIQBg</string>
+    <!-- achievement Carnage (Facile) -->
+    <string name="achievement_carnage_facile" translatable="false">CgkI4eKvj7YYEAIQBw</string>
+    <!-- achievement First Blood (Moyen) -->
+    <string name="achievement_first_blood_moyen" translatable="false">CgkI4eKvj7YYEAIQCA</string>
+    <!-- achievement Hat Trick (Moyen) -->
+    <string name="achievement_hat_trick_moyen" translatable="false">CgkI4eKvj7YYEAIQCQ</string>
+    <!-- achievement Carnage (Moyen) -->
+    <string name="achievement_carnage_moyen" translatable="false">CgkI4eKvj7YYEAIQCg</string>
+    <!-- achievement First Blood (Difficile) -->
+    <string name="achievement_first_blood_difficile" translatable="false">CgkI4eKvj7YYEAIQCw</string>
+    <!-- achievement Hat Trick (Difficile) -->
+    <string name="achievement_hat_trick_difficile" translatable="false">CgkI4eKvj7YYEAIQDA</string>
+    <!-- achievement Carnage (Difficile) -->
+    <string name="achievement_carnage_difficile" translatable="false">CgkI4eKvj7YYEAIQDQ</string>
+    <!-- achievement First Blood (Online) -->
+    <string name="achievement_first_blood_online" translatable="false">CgkI4eKvj7YYEAIQDg</string>
+    <!-- achievement Hat Trick (Online) -->
+    <string name="achievement_hat_trick_online" translatable="false">CgkI4eKvj7YYEAIQDw</string>
+    <!-- achievement Carnage (Online) -->
+    <string name="achievement_carnage_online" translatable="false">CgkI4eKvj7YYEAIQEA</string>
+    <!-- achievement Friendly Fire -->
+    <string name="achievement_friendly_fire" translatable="false">CgkI4eKvj7YYEAIQEQ</string>
+    <!-- achievement Test achievement -->
+    <string name="achievement_test_achievement" translatable="false">CgkI4eKvj7YYEAIQEg</string>
+    <!-- leaderboard Vs Facile -->
+    <string name="leaderboard_vs_facile" translatable="false">CgkI4eKvj7YYEAIQAQ</string>
+    <!-- leaderboard Vs Moyen -->
+    <string name="leaderboard_vs_moyen" translatable="false">CgkI4eKvj7YYEAIQAw</string>
+    <!-- leaderboard Vs Difficile -->
+    <string name="leaderboard_vs_difficile" translatable="false">CgkI4eKvj7YYEAIQBA</string>
+    <!-- leaderboard Online -->
+    <string name="leaderboard_online" translatable="false">CgkI4eKvj7YYEAIQBQ</string>
+</resources>
