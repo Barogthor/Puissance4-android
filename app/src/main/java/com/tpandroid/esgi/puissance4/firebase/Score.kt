@@ -11,6 +11,7 @@ class Score {
     var normal_victory: Long = 0
     var hard_victory: Long = 0
     var hard_defeat: Long = 0
+    var timestamp: Long = 0
 
     constructor() {}
 
@@ -20,7 +21,8 @@ class Score {
         normal_defeat: Long,
         normal_victory: Long,
         hard_victory: Long,
-        hard_defeat: Long
+        hard_defeat: Long,
+        timestamp: Long
     ) {
         this.easy_defeat = easy_defeat
         this.easy_victory = easy_victory
@@ -28,6 +30,7 @@ class Score {
         this.normal_victory = normal_victory
         this.hard_victory = hard_victory
         this.hard_defeat = hard_defeat
+        this.timestamp = timestamp
     }
 
     override fun toString(): String {

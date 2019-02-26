@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), ScoreObserver {
 
         println("=======================================================")
         var scoreFirebase = ScoreFirebase("florian")
-        var score = Score(1,1,3,2,0,4)
+        var score = Score(1,1,3,2,0,4,0)
         scoreFirebase.updateScore(score)
     }
 

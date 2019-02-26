@@ -13,8 +13,9 @@ class ScoreEventListener: ValueEventListener, ScoreObservable{
     var score: Score? = null
 
     override fun onDataChange(dataSnapshot: DataSnapshot) {
-        // Get Post object and use the values to update the UI
         score = dataSnapshot.getValue(Score::class.java)
+        Log.i("SCORE","=================================================================")
+        Log.e("SCORE","loadScore:onDataChange")
         notifyObserver()
 
 
@@ -22,7 +23,7 @@ class ScoreEventListener: ValueEventListener, ScoreObservable{
 
     override fun onCancelled(databaseError: DatabaseError) {
         // Getting Post failed, log a message
-        println("[DEBUG] loadScore:onCancelled "+ databaseError.toException())
+        Log.e("SCORE","loadScore:onCancelled ", databaseError.toException())
         // ...
     }
 

@@ -27,7 +27,6 @@ class ScoreFirebase {
     }
 
     fun getUserScore(scoreObserver: ScoreObserver){
-        var score: Score? = null
         scoreListener.addObserver(scoreObserver)
         scoreRef.addListenerForSingleValueEvent(scoreListener)
         updateTimestamp()
