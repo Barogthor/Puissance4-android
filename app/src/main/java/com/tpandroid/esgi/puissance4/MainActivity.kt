@@ -32,6 +32,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.games.Games
 
 import com.tpandroid.esgi.puissance4.Game.Cache
+import com.tpandroid.esgi.puissance4.firebase.ScoreFirebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,15 +58,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_layout)
 
-        val cache = Cache(cacheDir)
+//        val cache = Cache(cacheDir)
 
-        cache.setScore(1, Pair(5, 5))
+//        cache.setScore(1, Pair(5, 5))
 
-        Log.i("cacheuu", cache.getScore(1).toString())
-
+//        Log.i("cacheuu", cache.getScore(1).toString())
 
         startSignInIntent()
 
+        println("=======================================================")
+        var scoreFirebase = ScoreFirebase("florian")
+        var score = scoreFirebase.getUserScore()
+        println(score)
+        println("=======================================================")
     }
 
     private fun startSignInIntent() {
