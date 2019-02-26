@@ -2,6 +2,7 @@ package com.tpandroid.esgi.puissance4.Game
 
 import android.util.Log
 import java.io.File
+import java.io.FileNotFoundException
 import java.io.FileWriter
 import java.util.*
 
@@ -33,7 +34,11 @@ class Cache(val directory: File) {
     }
 
     private fun loadScoreFromFile(file: File): Pair<Int, Int> {
-        val scanner = Scanner(file)
+        val scanner = try {
+            Scanner(file)
+        } catch (e : FileNotFoundException) {
+            return Pair(0, 0)
+        }
 
         val line = scanner.nextLine()
 

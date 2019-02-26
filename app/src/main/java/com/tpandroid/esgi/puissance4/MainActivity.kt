@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         Log.i("cacheuu", cache.getScore(2).toString())
 
         cache.setScore(1, Pair(5, 5))
+        cache.setScore(1, Pair(12, 5))
 
         Log.i("cacheuu", cache.getScore(1).toString())
         cache.incrDefeat(1)
