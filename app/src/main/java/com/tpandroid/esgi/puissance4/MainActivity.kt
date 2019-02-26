@@ -34,6 +34,7 @@ import com.tpandroid.esgi.puissance4.Game.AchievementsUnlocker
 
 import com.tpandroid.esgi.puissance4.Game.Cache
 import java.io.File
+import com.tpandroid.esgi.puissance4.firebase.ScoreFirebase
 
 class MainActivity : AppCompatActivity() {
 
@@ -70,9 +71,13 @@ class MainActivity : AppCompatActivity() {
         cache.incrDefeat(1)
         Log.i("cacheuu", cache.getScore(1).toString())
 
-
         startSignInIntent()
 
+        println("=======================================================")
+        var scoreFirebase = ScoreFirebase("florian")
+        var score = scoreFirebase.getUserScore()
+        println(score)
+        println("=======================================================")
     }
 
     private fun startSignInIntent() {
