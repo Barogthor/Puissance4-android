@@ -11,19 +11,13 @@ import com.google.android.gms.tasks.Task
 
 class GoogleAuthentification{
     private val TEST_RESULT = "TEST_RESULT"
-
-    val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
-    var signInOpt = signInOptions.build()
-
-    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
         .requestServerAuthCode("839161475425-40m7ffku0dsd3723dv3ph13njuuplosq.apps.googleusercontent.com")
         .requestProfile()
         .build()
 
-    var RC_SIGN_IN = 0
-        private set
+    val RC_SIGN_IN = 9001
 
-    var account = GoogleSignInAccount.createDefault()
     private lateinit var activity: AppCompatActivity
 
     constructor(activity: AppCompatActivity){
