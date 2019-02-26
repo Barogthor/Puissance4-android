@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity() {
 
         val cache = Cache(filesDir)
 
+        Log.i("cacheuu", cache.getScore(2).toString())
+
         cache.setScore(1, Pair(5, 5))
 
         Log.i("cacheuu", cache.getScore(1).toString())

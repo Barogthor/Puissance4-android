@@ -39,6 +39,10 @@ class Cache(val directory: File) {
 
         val values = line.split(" ")
 
+        if(values.isEmpty()) {
+            return Pair(0, 0)
+        }
+
         val results = values.map { it.toInt() }
         val victories = results[0]
         val defeat = results[1]
